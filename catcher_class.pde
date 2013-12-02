@@ -1,12 +1,14 @@
-class catcher {
+class Catcher {
+  PVector l;
   int d;
 
-  catcher() {
+  Catcher() {
     d = width/20;
+    l = new PVector(mouseX, height - d);
   }
 
-  void showC() {
+  void show() {
     fill(255);    
-    ellipse(mouseX, width-100, d, d);
+    ellipse(l.x, l.y, d, d);
   }
 }

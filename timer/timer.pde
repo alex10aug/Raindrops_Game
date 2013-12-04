@@ -25,9 +25,13 @@ void draw() {
     v.y = -v.y;
   }
   if (currentTime - oldTime >= 1000) {
-    v = new PVector(random(-10, 10), random(-10, 10));
+    v = new PVector(random(-100, 100), random(-100, 100));
     c = color(random(255));
     oldTime = currentTime;
   }
+}
+
+void mousePressed() {
+  v = new PVector(0, 0);
 }
 

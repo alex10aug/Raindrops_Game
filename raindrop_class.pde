@@ -32,10 +32,12 @@ class Raindrops {
     }
   }
 
-  void collect(Catcher c) {
-    if (dist(l.x, l.y, c.d, c.d) < raindrop.height/2 + c.d) {
+  void collectAndScore(Catcher c, int score) {
+    text(score, 9*width/10, height/10);
+    if (dist(l.x, l.y, c.l.x, c.l.y) < raindrop.height/2 + 30) {
       l.y = random(-height, 0);
       l.x = random(width);
+      score++;
     }
   }
 }

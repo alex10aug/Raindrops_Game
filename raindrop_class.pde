@@ -21,24 +21,29 @@ class Raindrops {
   }
 
   void fall() {
+    //raindrops have location, velocity, and acceleration
     l.add(v);
     v.add(a);
   }
 
   void wrap() {
+    //every time a raindrop reaches the bottom, it goes back to top
     if (l.y > height) {
       l.y = random(-height, 0);
       l.x = random(width);
     }
   }
 
-  void collectAndScore(Catcher c, int score) {
+  void collect(Catcher c) {
     text(score, 9*width/10, height/10);
     if (dist(l.x, l.y, c.l.x, c.l.y) < raindrop.height/2 + 30) {
+      score++;
       l.y = random(-height, 0);
       l.x = random(width);
-      score++;
     }
+  }
+  void stopDrops() {
+    l.y = random(-height, 0);
   }
 }
 

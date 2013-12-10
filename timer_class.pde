@@ -1,17 +1,16 @@
 class Timer {
-  int currentTime;
   int oldTime;
   int interval;
 
   Timer() {
-    currentTime = millis();
     oldTime = 0;
     interval = 1000;
   }
 
-  boolean check() {
-    if (currentTime - oldTime >= interval) {
-      oldTime = currentTime;
+  boolean track() {
+    //every time millis() - oldTime >= interval, left side resets to zero
+    if (millis() - oldTime >= interval) {
+      oldTime = millis();
       return true;
     }
     else {
@@ -19,3 +18,4 @@ class Timer {
     }
   }
 }
+

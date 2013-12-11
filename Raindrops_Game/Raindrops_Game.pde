@@ -6,6 +6,7 @@ PImage lake;
 int index = 1;
 int score = 0;
 int interval = 1000;
+boolean play = false;
 
 void setup() {
   lake = loadImage("lake.jpg");
@@ -20,35 +21,44 @@ void setup() {
 
 void draw() {
   colorMode(HSB, width, 100, 100);
-  background(lake);
-  //display catcher
-  c.show();
-  //every time millis() - oldTime >= interval, index increases
-  if (t.track()) {
-    index++;
+  if (!play) {
+    background(0);
+    fill(0, 255, 0);
+    ellipse(width/2, height/2, 2*width/3, 2*height/3);
+    stroke(255);
+    text("START", width/2, height/2);
   }
-  for (int i = 0; i < index; i++) {
-    //display raindrops
-    drops[i].show();
-    //makes raindrops fall
-    drops[i].fall();
-    //every time a raindrop reaches the bottom, it goes back to top
-    drops[i].wrap();
-    //catcher catches raindrops and increases score every time
-    drops[i].collect(c);
+  if (play) {
+    background(lake);
+    //display catcher
+    c.show();
+    //every time millis() - oldTime >= interval, index increases
+    if (t.track()) {
+      index++;
+    }
+    for (int i = 0; i < index; i++) {
+      //display raindrops
+      drops[i].show();
+      //makes raindrops fall
+      drops[i].fall();
+      //every time a raindrop reaches the bottom, it goes back to top
+      drops[i].wrap();
+      //catcher catches raindrops and increases score every time
+      drops[i].collect(c);
+    }
+    text(score, 9*width/10, height/10);
   }
-  text(score, 9*width/10, height/10);
-  println(millis());
 }
 
-void endGame() {
-  if (millis() == 5000) {
-    background(mouseX, 100, 100);
-    for (int i = 0; i < index; i++) {
-      drops[i].stopDrops();
-    }
-    textAlign(CENTER, CENTER);
-    textSize(200);
-    text("GAME OVER!"+"n/"+score, width/2, height/2);
-  }
-}
+//void endScreen() {
+//  if (millis() == 5000) {
+//    background(mouseX, 100, 100);
+//    for (int i = 0; i < index; i++) {
+//      drops[i].stopDrops();
+//    }
+//    textAlign(CENTER, CENTER);
+//    textSize(200);
+//    text("GAME OVER!"+"n/"+score, width/2, height/2);
+//  }
+//}
+

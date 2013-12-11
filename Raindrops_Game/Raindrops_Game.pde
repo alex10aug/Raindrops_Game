@@ -7,6 +7,7 @@ int index = 1;
 int score = 0;
 int interval = 1000;
 boolean play = false;
+boolean endGame = false;
 
 void setup() {
   lake = loadImage("lake.jpg");
@@ -28,7 +29,7 @@ void draw() {
     stroke(255);
     text("START", width/2, height/2);
   }
-  if (play) {
+  else {
     background(lake);
     //display catcher
     c.show();
@@ -48,17 +49,24 @@ void draw() {
     }
     text(score, 9*width/10, height/10);
   }
+  if (endGame()) {
+    background(mouseX, 100, 100);
+    for (int i = 0; i < index; i++) {
+      drops[i].stopDrops();
+    }
+    textAlign(CENTER, CENTER);
+    textSize(200);
+    text("GAME OVER!"+"n/"+score, width/2, height/2);
+  }
+  println(millis());
 }
 
-//void endScreen() {
-//  if (millis() == 5000) {
-//    background(mouseX, 100, 100);
-//    for (int i = 0; i < index; i++) {
-//      drops[i].stopDrops();
-//    }
-//    textAlign(CENTER, CENTER);
-//    textSize(200);
-//    text("GAME OVER!"+"n/"+score, width/2, height/2);
-//  }
-//}
+boolean endGame() {
+  if (millis() == 5000) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
 

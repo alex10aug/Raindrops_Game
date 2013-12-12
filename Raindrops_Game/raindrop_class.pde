@@ -18,6 +18,7 @@ class Raindrops {
   }
 
   void show() {
+    noStroke();
     ellipse(l.x, l.y, d, d);
     //    image(raindrop, l.x, l.y);
   }

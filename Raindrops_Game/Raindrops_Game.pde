@@ -27,7 +27,8 @@ void draw() {
     fill(0, 255, 0);
     rectMode(CENTER);
     rect(width/2, height/2, width/2, height/2);
-//    stroke(255);
+    stroke(255);
+    textAlign(CENTER, CENTER);
     text("START", width/2, height/2);
   }
   else {
@@ -72,7 +73,7 @@ boolean endGame() {
 }
 
 void mousePressed() {
-  if (mouseX > width/4 && mouseX > 3*width/4 && mouseY > height/4 && mouseY < 3*height/4) {
+  if (mouseX > width/4 && mouseX < 3*width/4 && mouseY > height/4 && mouseY < 3*height/4) {
     play = true;
   }
 }

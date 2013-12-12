@@ -1,6 +1,8 @@
 Raindrops[] drops = new Raindrops[500];
 Catcher c;
 Timer t;
+StartScreen s;
+EndScreen e;
 PImage lake;
 //used for making raindrops fall at certain time intervals
 int index = 1;
@@ -19,22 +21,25 @@ void setup() {
   }
   c = new Catcher();
   t = new Timer();
+  s = new StartScreen();
+  e = new EndScreen();
 }
 
 void draw() {
   if (!play) {
     background(0);
-    fill(0, 255, 0);
-    rectMode(CENTER);
-    rect(width/2, height/2, width/2, height/2);
-    fill(255);    
-    textAlign(CENTER, CENTER);
-    textSize(200);
-    text("START", width/2, height/2);
+    s.display();
+    //    fill(0, 255, 0);
+    //    rectMode(CENTER);
+    //    rect(width/2, height/2, width/2, height/2);
+    //    fill(255);    
+    //    textAlign(CENTER, CENTER);
+    //    textSize(200);
+    //    text("START", width/2, height/2);
   }
   else {
     background(0);
-    //display catcher
+    //show catcher
     c.show();
     //every time millis() - oldTime >= interval, index increases
     if (t.track()) {
@@ -49,34 +54,35 @@ void draw() {
       drops[i].wrap();
       //catcher catches raindrops and increases score every time
       drops[i].collect(c);
+      if (drops[i].endGame()) {
+        background(mouseX, 100, 100);
+        e.display();
+        //    for (int i = 0; i < index; i++) {
+        //      drops[i].stopDrops();
+        //    }
+        //    textAlign(CENTER, CENTER);
+        //    textSize(200);
+        //    text("GAME OVER!"+"n/"+"SCORE = "+score, width/2, height/3);
+        //    rectMode(CENTER);
+        //    fill(255, 0, 0);
+        //    rect(width/2, 5*height/6, width/2, height/3);
+        //    text("TRY AGAIN?", width/2, 5*height/6);
+        //    if(mousePressed
+      }
     }
     text(score, 9*width/10, height/10);
-  }
-  if (endGame()) {
-    background(mouseX, 100, 100);
-    for (int i = 0; i < index; i++) {
-      drops[i].stopDrops();
-    }
-    textAlign(CENTER, CENTER);
-    textSize(200);
-    text("GAME OVER!"+"n/"+"SCORE = "+score, width/2, height/3);
-    rectMode(CENTER);
-    fill(255, 0, 0);
-    rect(width/2, 5*height/6, width/2, height/3);
-    text("TRY AGAIN?", width/2, 5*height/6);
-    if(mousePressed
   }
   println(millis());
 }
 
-boolean endGame() {
-  if (millis() == 5000) {
-    return true;
-  }
-  else {
-    return false;
-  }
-}
+//boolean endGame() {
+//  if (millis() == 5000) {
+//    return true;
+//  }
+//  else {
+//    return false;
+//  }
+//}
 
 void mousePressed() {
   if (mouseX > width/4 && mouseX < 3*width/4 && mouseY > height/4 && mouseY < 3*height/4) {

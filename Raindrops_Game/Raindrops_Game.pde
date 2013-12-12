@@ -11,7 +11,8 @@ boolean endGame = false;
 
 void setup() {
   lake = loadImage("lake.jpg");
-  size(lake.width, lake.height);
+  //  size(lake.width, lake.height);
+  size(800, 800);
   //initialize raindrops, catcher, and timer
   for (int i = 0; i < drops.length; i++) {
     drops[i] = new Raindrops();
@@ -21,16 +22,16 @@ void setup() {
 }
 
 void draw() {
-  colorMode(HSB, width, 100, 100);
   if (!play) {
     background(0);
     fill(0, 255, 0);
-    ellipse(width/2, height/2, 2*width/3, 2*height/3);
-    stroke(255);
+    rectMode(CENTER);
+    rect(width/2, height/2, width/2, height/2);
+//    stroke(255);
     text("START", width/2, height/2);
   }
   else {
-    background(lake);
+    background(255, 0, 0);
     //display catcher
     c.show();
     //every time millis() - oldTime >= interval, index increases
@@ -67,6 +68,12 @@ boolean endGame() {
   }
   else {
     return false;
+  }
+}
+
+void mousePressed() {
+  if (mouseX > width/4 && mouseX > 3*width/4 && mouseY > height/4 && mouseY < 3*height/4) {
+    play = true;
   }
 }
 

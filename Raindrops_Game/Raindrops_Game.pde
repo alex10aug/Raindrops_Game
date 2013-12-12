@@ -27,12 +27,13 @@ void draw() {
     fill(0, 255, 0);
     rectMode(CENTER);
     rect(width/2, height/2, width/2, height/2);
-    stroke(255);
+    fill(255);    
     textAlign(CENTER, CENTER);
+    textSize(200);
     text("START", width/2, height/2);
   }
   else {
-    background(255, 0, 0);
+    background(0);
     //display catcher
     c.show();
     //every time millis() - oldTime >= interval, index increases
@@ -58,7 +59,12 @@ void draw() {
     }
     textAlign(CENTER, CENTER);
     textSize(200);
-    text("GAME OVER!"+"n/"+score, width/2, height/2);
+    text("GAME OVER!"+"n/"+"SCORE = "+score, width/2, height/3);
+    rectMode(CENTER);
+    fill(255, 0, 0);
+    rect(width/2, 5*height/6, width/2, height/3);
+    text("TRY AGAIN?", width/2, 5*height/6);
+    if(mousePressed
   }
   println(millis());
 }

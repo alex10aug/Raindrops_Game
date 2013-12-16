@@ -48,29 +48,5 @@ class Raindrops {
   void stopDrops() {
     l.y = random(-height, 0);
   }
-
-  boolean miss() {
-    if (l.y > height) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
-
-  void missScore() {
-    if (miss()) {
-      missedScore++;
-    }
-  }
-
-  boolean endGame() {
-    if (missedScore > 3) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
 }
 

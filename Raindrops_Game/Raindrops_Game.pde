@@ -1,8 +1,9 @@
 Raindrops[] drops = new Raindrops[500];
 Catcher c;
 Timer t;
-StartScreen s;
-EndScreen e;
+StartScreen ss;
+EndScreen es;
+Star s;
 PImage lake;
 //used for making raindrops fall at certain time intervals
 int index = 1;
@@ -20,21 +21,22 @@ void setup() {
   }
   c = new Catcher();
   t = new Timer();
-  s = new StartScreen();
-  e = new EndScreen();
+  s = new Star();
+  ss = new StartScreen();
+  es = new EndScreen();
 }
 
 void draw() {
   if (!play) {
     background(0);
-    s.display();
+    ss.display();
   }
   else {
     background(lake);
     //show catcher
     c.show();
     //every time millis() - oldTime >= interval, index increases
-    if (t.track()) {
+    if (t.track(1000)) {
       index++;
     }
     for (int i = 0; i < index; i++) {
@@ -46,24 +48,21 @@ void draw() {
       drops[i].wrap();
       //catcher catches raindrops and increases score every time
       drops[i].collect(c);
-      if (drops[i].endGame()) {
-        background(mouseX, 100, 100);
-        e.display();
-      }
     }
+    s.show();
+    s.fall();
+    s.collect(c);
     text(score, 9*width/10, height/10);
   }
   println(millis());
 }
 
-//boolean endGame() {
-//  if (millis() == 5000) {
-//    return true;
-//  }
-//  else {
-//    return false;
-//  }
-//}
+void endGame(Raindrops r, Catcher c, Star s, EndScreen es) {
+  r.l.y = 2*height;
+  c.l.y = 2*height;
+  s.l.y = 2*height;
+  es.display();
+}
 
 void mousePressed() {
   if (mouseX > width/4 && mouseX < 3*width/4 && mouseY > height/4 && mouseY < 3*height/4) {

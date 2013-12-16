@@ -2,6 +2,7 @@ class Catcher {
   PImage hands;
   PVector l;
   float scale;
+  int d = 100;
 
   Catcher() {
     scale = 0.2;

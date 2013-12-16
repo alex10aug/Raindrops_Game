@@ -4,6 +4,8 @@ class Raindrops {
   PVector v;
   PVector a;
   float scale;
+  int d = 50;
+  int missedScore = 0;
 
   Raindrops() {
     scale = 0.1;
@@ -42,8 +44,33 @@ class Raindrops {
       l.x = random(width);
     }
   }
+
   void stopDrops() {
     l.y = random(-height, 0);
+  }
+
+  boolean miss() {
+    if (l.y > height) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  void missScore() {
+    if (miss()) {
+      missedScore++;
+    }
+  }
+
+  boolean endGame() {
+    if (missedScore > 3) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 }
 

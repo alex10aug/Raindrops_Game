@@ -51,17 +51,12 @@ void draw() {
     }
     s.show();
     s.fall();
-    s.collect(c);
+    for (int i = 0; i < index; i++) {
+      s.collect(drops[i], c, s, es);
+    }
     text(score, 9*width/10, height/10);
   }
   println(millis());
-}
-
-void endGame(Raindrops r, Catcher c, Star s, EndScreen es) {
-  r.l.y = 2*height;
-  c.l.y = 2*height;
-  s.l.y = 2*height;
-  es.display();
 }
 
 void mousePressed() {

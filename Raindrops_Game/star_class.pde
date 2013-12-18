@@ -33,12 +33,10 @@ class Star {
     a = new PVector(0, 0);
   }
   
-  void collect(Catcher c) {
+  void collect(Raindrops r, Catcher c, Star s, EndScreen es) {
     if (dist(l.x, l.y, c.l.x, c.l.y) < rainbowstar.height/2 + 30) {
       background(mouseX, 100, 100);
-      //      for (int i = 0; i < index; i++) {
-      //        drops[i].stopDrops();
-      //      }
+      es.endGame(r, c, s, es);
       stopStar();
       textAlign(CENTER, CENTER);
       textSize(100);

@@ -3,8 +3,6 @@ class Star {
   PVector l;
   PVector v;
   PVector a;
-  int oldTime;
-  int interval;
   float scale;
 
   Star() {
@@ -14,8 +12,6 @@ class Star {
     l = new PVector(random(width), 0);
     v = new PVector(random(-1, 1), random(10, 20));
     a = new PVector(0, -.01);
-    oldTime = 0;
-    interval = 10000;
   }
 
   void show() {
@@ -26,18 +22,11 @@ class Star {
     l.add(v);
     v.add(a);
   }
-
-  void stopStar() {
-    l = new PVector(0, 0);
-    v = new PVector(0, 0);
-    a = new PVector(0, 0);
-  }
   
-  void collect(Raindrops r, Catcher c, Star s, EndScreen es) {
+  void collect(Catcher c, EndScreen es) {
     if (dist(l.x, l.y, c.l.x, c.l.y) < rainbowstar.height/2 + 30) {
       background(mouseX, 100, 100);
-      es.endGame(r, c, s, es);
-      stopStar();
+      es.display();
       textAlign(CENTER, CENTER);
       textSize(100);
       text("YOU WIN!", width/2, height/3);

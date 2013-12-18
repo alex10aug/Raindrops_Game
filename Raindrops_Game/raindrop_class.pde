@@ -44,9 +44,5 @@ class Raindrops {
       l.x = random(width);
     }
   }
-
-  void stopDrops() {
-    l.y = random(-height, 0);
-  }
 }
 

@@ -1,4 +1,4 @@
-Raindrops[] drops = new Raindrops[500];
+Raindrops[] drops = new Raindrops[50];
 Catcher c;
 Timer t;
 StartScreen ss;
@@ -51,9 +51,7 @@ void draw() {
     }
     s.show();
     s.fall();
-    for (int i = 0; i < index; i++) {
-      s.collect(drops[i], c, s, es);
-    }
+    s.collect(c, es);
     text(score, 9*width/10, height/10);
   }
   println(millis());

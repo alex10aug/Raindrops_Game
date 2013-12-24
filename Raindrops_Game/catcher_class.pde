@@ -19,4 +19,3 @@ class Catcher {
     image(hands, l.x, l.y);
   }
 }
-

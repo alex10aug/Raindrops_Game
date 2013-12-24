@@ -27,14 +27,6 @@ class Star {
     if (dist(l.x, l.y, c.l.x, c.l.y) < rainbowstar.height/2 + 30) {
       background(mouseX, 100, 100);
       es.display();
-      textAlign(CENTER, CENTER);
-      textSize(100);
-      text("YOU WIN!", width/2, height/3);
-      rectMode(CENTER);
-      fill(255, 0, 0);
-      rect(width/2, 5*height/6, width/2, height/3);
-      text("TRY AGAIN?", width/2, 2*height/3);
     }
   }
 }
-

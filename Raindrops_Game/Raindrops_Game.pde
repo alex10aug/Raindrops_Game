@@ -1,14 +1,13 @@
 Raindrops[] drops = new Raindrops[50];
 Catcher c;
-Timer t;
-StartScreen ss;
 EndScreen es;
+Timer t;
 Star s;
+StartScreen ss;
 PImage lake;
 //used for making raindrops fall at certain time intervals
-int index = 1;
 int score = 0;
-int interval = 1000;
+int index = 1;
 boolean play = false;
 boolean endGame = false;
 
@@ -48,11 +47,14 @@ void draw() {
       drops[i].wrap();
       //catcher catches raindrops and increases score every time
       drops[i].collect(c);
+      //every time you miss a raindrop, missedScore increases
+      drops[i].miss();
+      //when lives = 0, the end screen displays
+      drops[i].lives(es);
     }
     s.show();
     s.fall();
     s.collect(c, es);
-    text(score, 9*width/10, height/10);
   }
   println(millis());
 }
@@ -62,4 +64,3 @@ void mousePressed() {
     play = true;
   }
 }
-

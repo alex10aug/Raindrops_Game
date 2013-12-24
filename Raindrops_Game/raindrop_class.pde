@@ -4,8 +4,8 @@ class Raindrops {
   PVector v;
   PVector a;
   float scale;
-  int d = 50;
   int missedScore = 0;
+  int lives = 3;
 
   Raindrops() {
     scale = 0.1;
@@ -37,6 +37,9 @@ class Raindrops {
   }
 
   void collect(Catcher c) {
+    textSize(12.5);
+    text("Catches", 9*width/10, 3*height/20);
+    textSize(50);
     text(score, 9*width/10, height/10);
     if (dist(l.x, l.y, c.l.x, c.l.y) < raindrop.height/2 + 30) {
       score++;
@@ -44,5 +47,27 @@ class Raindrops {
       l.x = random(width);
     }
   }
-}
 
+  void miss() {
+    textSize(12.5);
+    text("Misses", width/10, 3*height/20);
+    textSize(50);
+    text(missedScore, width/10, height/10);
+    if (l.y > height) {
+      missedScore++;
+    }
+  }
+
+  void lives(EndScreen es) {
+    textSize(12.5);
+    text("Lives", width/2, 3*height/20);
+    textSize(50);
+    text(lives, width/2, height/10);
+    if (missedScore > 20) {
+      lives--;
+    }
+    if (lives == 0) {
+      es.display();
+    }
+  }
+}

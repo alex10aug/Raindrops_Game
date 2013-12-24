@@ -1,13 +1,12 @@
 class Timer {
-  int oldTime;
+  int oldTime = 0;
 
   Timer() {
-    oldTime = 0;
   }
 
   boolean track(int interval) {
-    //every time millis() - oldTime >= interval, left side resets to zero
-    if (millis() - oldTime >= interval) {
+    //every time millis() - oldTime > interval, left side resets to zero
+    if (millis() - oldTime > interval) {
       oldTime = millis();
       return true;
     }
@@ -16,4 +15,3 @@ class Timer {
     }
   }
 }
-

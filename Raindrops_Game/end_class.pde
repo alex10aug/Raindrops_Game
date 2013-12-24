@@ -13,4 +13,3 @@ class EndScreen {
     text("TRY AGAIN?", width/2, 5*height/6);
   }
 }
-

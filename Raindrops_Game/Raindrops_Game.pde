@@ -1,4 +1,10 @@
-Raindrops[] drops = new Raindrops[50];
+/*
+THINGS TO FIX:
+-missedScore decreases weirdly (in raindrops class)
+*/
+
+//declares all necessary variables and image
+Raindrops[] drops = new Raindrops[500];
 Catcher c;
 EndScreen es;
 Timer t;
@@ -6,15 +12,22 @@ Star s;
 StartScreen ss;
 PImage lake;
 //used for making raindrops fall at certain time intervals
-int score = 0;
 int index = 1;
+//used for displaying start screen
+boolean start = true;
+//checks to see if the game is playing
 boolean play = false;
-boolean endGame = false;
+//keeps track of catches, misses, and lives
+int score = 0;
+int missedScore = 0;
+int lives = 3;
 
 void setup() {
+  //loads image of lake
   lake = loadImage("lake.jpg");
+  //equates size of display with the size of the lake image
   size(lake.width, lake.height);
-  //initialize raindrops, catcher, and timer
+  //initialize raindrops, catcher, timer, star, start screen, and end screen
   for (int i = 0; i < drops.length; i++) {
     drops[i] = new Raindrops();
   }
@@ -26,11 +39,12 @@ void setup() {
 }
 
 void draw() {
-  if (!play) {
-    background(0);
+  if (start) {
+    //start screen displays
     ss.display();
   }
-  else {
+  if (play) {
+    start = false;
     background(lake);
     //show catcher
     c.show();
@@ -44,23 +58,39 @@ void draw() {
       //makes raindrops fall
       drops[i].fall();
       //every time a raindrop reaches the bottom, it goes back to top
-      drops[i].wrap();
+      drops[i].wrap(es, drops[i]);
       //catcher catches raindrops and increases score every time
-      drops[i].collect(c);
-      //every time you miss a raindrop, missedScore increases
-      drops[i].miss();
-      //when lives = 0, the end screen displays
-      drops[i].lives(es);
+      drops[i].collect(drops[i], c, es);
     }
+    //sets star's properties
     s.show();
     s.fall();
-    s.collect(c, es);
+    for (int i = 0; i < index; i++) {
+      s.collect(drops[i], c, es);
+    }
+    s.avoid(c);
   }
-  println(millis());
 }
 
 void mousePressed() {
-  if (mouseX > width/4 && mouseX < 3*width/4 && mouseY > height/4 && mouseY < 3*height/4) {
-    play = true;
+  //when mouse is pressed, game is reset
+  play = true;
+//  es.endGame = false;
+//  es.star = false;
+  t.oldTime = millis();
+  for (int i = 0; i < index; i++) {
+    drops[i].reset();
+    drops[i].fall();
   }
+  s.reset();
+  s.show();
+  s.fall();
+  for (int i = 0; i < index; i++) {
+    s.collect(drops[i], c, es);
+  }
+  s.avoid(c);
+  index = 1;
+  score = 0;
+  missedScore = 0;
+  lives = 3;
 }

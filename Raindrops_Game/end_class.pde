@@ -3,10 +3,12 @@ class EndScreen {
   boolean star = false;
 
   EndScreen() {
+    //changes colorMode to RGB
     colorMode(RGB, 255, 255, 255);
   }
 
   void display(Raindrops r) {
+    //displays regular end screen
     r.stopDrops();
     background(255, 0, 0);
     fill(0);
@@ -20,6 +22,7 @@ class EndScreen {
   }
 
   void star(Raindrops r, Star s) {
+    //displays star's end screen
     r.stopDrops();
     background(0, 0, 255);
     fill(0);

@@ -1,3 +1,8 @@
+/*
+THINGS TO FIX:
+-missedScore decreases weirdly (in raindrops class)
+*/
+
 //declares all necessary variables and image
 Raindrops[] drops = new Raindrops[500];
 Catcher c;
@@ -56,6 +61,8 @@ void draw() {
       drops[i].wrap(es, drops[i]);
       //catcher catches raindrops and increases score every time
       drops[i].collect(drops[i], c, es);
+      //ends game if lives = 0
+      drops[i].endGame(es, drops[i]);
     }
     //sets star's properties
     s.show();
@@ -76,9 +83,9 @@ void mousePressed() {
   for (int i = 0; i < index; i++) {
     drops[i].reset();
     drops[i].fall();
+    drops[i].endGame(es, drops[i]);
   }
   s.reset();
-  s.show();
   s.fall();
   for (int i = 0; i < index; i++) {
     s.collect(drops[i], c, es);

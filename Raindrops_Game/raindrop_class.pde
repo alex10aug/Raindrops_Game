@@ -41,11 +41,6 @@ class Raindrops {
       lives--;
       missedScore = 0;
     }
-    //if you run out of lives, game ends and endGame becomes true
-    if (lives == 0) {
-      es.display(r);
-      play = false;
-    }
     //displays missedScore and lives
     textSize(12.5);
     text("Misses", width/10, 3*height/20);
@@ -82,5 +77,13 @@ class Raindrops {
     l = new PVector(random(width), random(-height, 0));
     v = new PVector(0, 1);
     a = new PVector(0, 0.001);
+  }
+
+  void endGame(EndScreen es, Raindrops r) {    
+    //if you run out of lives, game ends and endGame becomes true
+    if (lives == 0) {
+      es.display(r);
+      play = false;
+    }
   }
 }

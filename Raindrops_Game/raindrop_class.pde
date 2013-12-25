@@ -80,7 +80,7 @@ class Raindrops {
   }
 
   void endGame(EndScreen es, Raindrops r) {    
-    //if you run out of lives, game ends and endGame becomes true
+    //if you run out of lives, game ends and end screen displays
     if (lives == 0) {
       es.display(r);
       play = false;

@@ -11,9 +11,7 @@ class Catcher {
   }
 
   void show() {
-    colorMode(HSB, width, 100, 100);
     //catcher can only move horizontally
-    fill(mouseX, 100, 100);
     l.x = mouseX;
     imageMode(CENTER);    
     image(hands, l.x, l.y);

@@ -1,8 +1,3 @@
-/*
-THINGS TO FIX:
--missedScore decreases weirdly (in raindrops class)
-*/
-
 //declares all necessary variables and image
 Raindrops[] drops = new Raindrops[500];
 Catcher c;

@@ -5,7 +5,7 @@ Move the catcher along the bottom of the screen to catch the raindrops that are 
 
 *Good luck and have fun!*
 
-_BUGS:_
+_*BUGS:*_
 
 1. the star sometimes goes off the screen when it is coming down
 

@@ -7,6 +7,6 @@ Move the catcher along the bottom of the screen to catch the raindrops that are 
 
 **BUGS:**
 
-1. the star sometimes goes off the screen when it is coming down
+**1.** the star sometimes goes off the screen when it is coming down
 
-2. clicking the mouse always resets the game (could be annoying if you didn't want to reset)
+**2.** clicking the mouse always resets the game (could be annoying if you didn't want to reset)

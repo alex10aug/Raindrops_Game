@@ -72,8 +72,6 @@ void draw() {
 void mousePressed() {
   //when mouse is pressed, game is reset
   play = true;
-//  es.endGame = false;
-//  es.star = false;
   t.oldTime = millis();
   for (int i = 0; i < index; i++) {
     drops[i].reset();

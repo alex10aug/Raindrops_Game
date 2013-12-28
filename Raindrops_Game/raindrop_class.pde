@@ -76,7 +76,7 @@ class Raindrops {
     //restores initial conditions when game is reset
     l = new PVector(random(width), random(-height, 0));
     v = new PVector(0, 1);
-    a = new PVector(0, 0.001);
+    a = new PVector(0, 0.01);
   }
 
   void endGame(EndScreen es, Raindrops r) {    

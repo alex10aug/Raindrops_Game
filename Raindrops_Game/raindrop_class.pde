@@ -50,7 +50,7 @@ class Raindrops {
     text(lives, width/2, height/10);
   }
 
-  void collect(Raindrops r, Catcher c, EndScreen es) {
+  void collect(Raindrops r, Catcher c) {
     fill(255);
     //displays score
     textSize(12.5);

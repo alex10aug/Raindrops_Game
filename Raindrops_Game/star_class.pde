@@ -60,6 +60,6 @@ class Star {
     //restores initial conditions when game is reset
     l = new PVector(random(width), 0);
     v = new PVector(random(-1, 1), random(10, 20));
-    a = new PVector(0, -.01);
+    a = new PVector(0, 1);
   }
 }

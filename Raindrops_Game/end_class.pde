@@ -1,8 +1,4 @@
 class EndScreen {
-  //creates two booleans for the regular and star end screen
-  boolean endGame = false;
-  boolean star = false;
-
   EndScreen() {
     //changes colorMode to RGB
     colorMode(RGB, 255, 255, 255);
